@@ -11,12 +11,12 @@
  * Description: Grow your business on Facebook! Use this official plugin to help sell more of your products using Facebook. After completing the setup, you'll be ready to create ads that promote your products and you can also create a shop section on your Page where customers can browse your products on Facebook.
  * Author: Facebook
  * Author URI: https://www.facebook.com/
- * Version: 3.1.13
+ * Version: 3.1.14
  * Requires at least: 5.6
  * Text Domain: facebook-for-woocommerce
  * Tested up to: 6.5
  * WC requires at least: 6.4
- * WC tested up to: 8.7
+ * WC tested up to: 8.8
  *
  * @package FacebookCommerce
  */
@@ -44,7 +44,7 @@ class WC_Facebook_Loader {
 	/**
 	 * @var string the plugin version. This must be in the main plugin file to be automatically bumped by Woorelease.
 	 */
-	const PLUGIN_VERSION = '3.1.13'; // WRCS: DEFINED_VERSION.
+	const PLUGIN_VERSION = '3.1.14'; // WRCS: DEFINED_VERSION.
 
 	// Minimum PHP version required by this plugin.
 	const MINIMUM_PHP_VERSION = '7.4.0';
@@ -85,6 +85,7 @@ class WC_Facebook_Loader {
 	protected function __construct() {
 
 		register_activation_hook( __FILE__, array( $this, 'activation_check' ) );
+		register_deactivation_hook( __FILE__, array( $this, 'maybe_remove_messenger_deprecation_notice' ) );
 
 		add_action( 'admin_init', array( $this, 'check_environment' ) );
 
@@ -314,6 +315,19 @@ class WC_Facebook_Loader {
 		}
 	}
 
+	/**
+	 * Removes facebook_messenger_deprecation_warning notice if it exists.
+	 *
+	 * @since 3.1.14
+	 * @return void
+	 */
+	public function maybe_remove_messenger_deprecation_notice() {
+		$notice_slug = 'facebook_messenger_deprecation_warning';
+		if( class_exists( 'WC_Admin_Notices' ) && \WC_Admin_Notices::has_notice( $notice_slug ) ) {
+			\WC_Admin_Notices::remove_notice( $notice_slug );
+		}
+	}
+
 
 	/**
 	 * Determines if the required plugins are compatible.
@@ -381,7 +395,6 @@ class WC_Facebook_Loader {
 
 		return defined( 'WC_VERSION' ) && version_compare( WC_VERSION, self::MINIMUM_WC_VERSION, '>=' );
 	}
-
 
 	/**
 	 * Deactivates the plugin.
