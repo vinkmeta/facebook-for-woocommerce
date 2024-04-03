@@ -3,7 +3,7 @@ Contributors: facebook, automattic, woothemes
 Tags: facebook, woocommerce, marketing, product catalog feed, pixel
 Requires at least: 4.4
 Tested up to: 6.5
-Stable tag: 3.1.13
+Stable tag: 3.1.14
 Requires PHP: 5.6 or greater
 MySQL: 5.6 or greater
 License: GPLv2 or later
@@ -39,6 +39,11 @@ When opening a bug on GitHub, please give us as many details as possible.
 * Current version of Facebook-for-WooCommerce, WooCommerce, Wordpress, PHP
 
 == Changelog ==
+
+= 3.1.14 - 2024-04-03 =
+* Fix - Remove facebook_messenger_deprecation_warning notice on deactivation.
+* Tweak - Insert pixel-event-placeholder element via vanilla JS.
+* Tweak - WC 8.8 compatibility.
 
 = 3.1.13 - 2024-03-27 =
 * Add - Messenger feature deprecation notices.
