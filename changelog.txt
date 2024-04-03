@@ -1,5 +1,10 @@
 *** Facebook for WooCommerce Changelog ***
 
+= 3.1.14 - 2024-04-03 =
+* Fix - Remove facebook_messenger_deprecation_warning notice on deactivation.
+* Tweak - Insert pixel-event-placeholder element via vanilla JS.
+* Tweak - WC 8.8 compatibility.
+
 = 3.1.13 - 2024-03-27 =
 * Add - Messenger feature deprecation notices.
 
