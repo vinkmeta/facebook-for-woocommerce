@@ -360,14 +360,6 @@ class WC_Facebookcommerce_Integration extends WC_Integration {
 			$this->events_tracker = new WC_Facebookcommerce_EventsTracker( $user_info, $aam_settings );
 		}
 
-		// Initialize the messenger chat features.
-		$this->messenger_chat = new WC_Facebookcommerce_MessengerChat(
-			array(
-				'fb_page_id'             => $this->get_facebook_page_id(),
-				'facebook_jssdk_version' => $this->get_js_sdk_version(),
-			)
-		);
-
 		// Update products on change of status.
 		add_action(
 			'transition_post_status',
