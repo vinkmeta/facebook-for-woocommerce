@@ -21,6 +21,8 @@ use WooCommerce\Facebook\Locale;
 
 /**
  * The Messenger settings screen object.
+ *
+ * @deprecated 3.2.0
  */
 class Messenger extends Abstract_Settings_Screen {
 
