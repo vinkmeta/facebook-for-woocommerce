@@ -19,6 +19,8 @@ if ( ! class_exists( 'WC_Facebookcommerce_MessengerChat' ) ) :
 
 	/**
 	 * Messenger chat handler class.
+	 *
+	 * @deprecated 3.2.0
 	 */
 	class WC_Facebookcommerce_MessengerChat {
 
