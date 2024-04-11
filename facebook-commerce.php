@@ -2746,6 +2746,7 @@ class WC_Facebookcommerce_Integration extends WC_Integration {
 		 * Filters whether the Facebook messenger is enabled.
 		 *
 		 * @since 1.10.0
+		 * @deprecated 3.2.0
 		 *
 		 * @param bool $is_enabled whether the Facebook messenger is enabled
 		 * @param \WC_Facebookcommerce_Integration $integration the integration instance
