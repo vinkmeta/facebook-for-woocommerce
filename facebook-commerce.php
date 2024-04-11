@@ -2746,10 +2746,13 @@ class WC_Facebookcommerce_Integration extends WC_Integration {
 	 * Determines whether the Facebook messenger is enabled.
 	 *
 	 * @since 1.10.0
+	 * @deprecated 3.2.0
 	 *
 	 * @return bool
 	 */
 	public function is_messenger_enabled() {
+		return false;
+
 		/**
 		 * Filters whether the Facebook messenger is enabled.
 		 *
