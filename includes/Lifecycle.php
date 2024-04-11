@@ -334,6 +334,12 @@ class Lifecycle extends Framework\Lifecycle {
 		if( class_exists( 'WC_Admin_Notices' ) && \WC_Admin_Notices::has_notice( $notice_slug ) ) {
 			\WC_Admin_Notices::remove_notice( $notice_slug );
 		}
+
+		// Delete all messenger options
+		delete_option( \WC_Facebookcommerce_Integration::SETTING_ENABLE_MESSENGER );
+		delete_option( \WC_Facebookcommerce_Integration::SETTING_MESSENGER_LOCALE );
+		delete_option( \WC_Facebookcommerce_Integration::SETTING_MESSENGER_GREETING );
+		delete_option( \WC_Facebookcommerce_Integration::SETTING_MESSENGER_COLOR_HEX );
 	}
 
 }
