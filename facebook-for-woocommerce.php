@@ -91,7 +91,6 @@ class WC_Facebook_Loader {
 
 		add_action( 'admin_notices', array( $this, 'add_plugin_notices' ) ); // admin_init is too early for the get_current_screen() function.
 		add_action( 'admin_notices', array( $this, 'admin_notices' ), 15 );
-		add_action( 'admin_notices', array( $this, 'maybe_show_messenger_deprecation_notice' ), 14 );
 
 		// If the environment check fails, initialize the plugin.
 		if ( $this->is_environment_compatible() ) {
@@ -302,6 +301,7 @@ class WC_Facebook_Loader {
 	 * Adds warning notice that Facebook Messenger will be deprecated if the setting is enabled.
 	 *
 	 * @since 3.1.13
+	 * @deprecated 3.2.0
 	 */
 	public function maybe_show_messenger_deprecation_notice() {
 		// Display the notice on the Facebook for WooCommerce settings pages (except Messenger settings, which has a static notice).
