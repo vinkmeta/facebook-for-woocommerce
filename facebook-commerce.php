@@ -2488,6 +2488,7 @@ class WC_Facebookcommerce_Integration extends WC_Integration {
 	 * Gets the configured Facebook messenger locale.
 	 *
 	 * @since 1.10.0
+	 * @deprecated 3.2.0
 	 *
 	 * @return string
 	 */
@@ -2496,6 +2497,7 @@ class WC_Facebookcommerce_Integration extends WC_Integration {
 		 * Filters the configured Facebook messenger locale.
 		 *
 		 * @since 1.10.0
+		 * @deprecated 3.2.0
 		 *
 		 * @param string $locale the configured Facebook messenger locale
 		 * @param \WC_Facebookcommerce_Integration $integration the integration instance
@@ -2507,6 +2509,7 @@ class WC_Facebookcommerce_Integration extends WC_Integration {
 	 * Gets the configured Facebook messenger greeting.
 	 *
 	 * @since 1.10.0
+	 * @deprecated 3.2.0
 	 *
 	 * @return string
 	 */
@@ -2515,6 +2518,7 @@ class WC_Facebookcommerce_Integration extends WC_Integration {
 		 * Filters the configured Facebook messenger greeting.
 		 *
 		 * @since 1.10.0
+		 * @deprecated 3.2.0
 		 *
 		 * @param string $greeting the configured Facebook messenger greeting
 		 * @param \WC_Facebookcommerce_Integration $integration the integration instance
@@ -2527,6 +2531,7 @@ class WC_Facebookcommerce_Integration extends WC_Integration {
 	 * Gets the maximum number of characters allowed in the messenger greeting.
 	 *
 	 * @since 1.10.0
+	 * @deprecated 3.2.0
 	 *
 	 * @return int
 	 */
@@ -2537,6 +2542,7 @@ class WC_Facebookcommerce_Integration extends WC_Integration {
 		 * Filters the maximum number of characters allowed in the messenger greeting.
 		 *
 		 * @since 1.10.0
+		 * @deprecated 3.2.0
 		 *
 		 * @param int $max the maximum number of characters allowed in the messenger greeting
 		 * @param \WC_Facebookcommerce_Integration $integration the integration instance
@@ -2552,6 +2558,7 @@ class WC_Facebookcommerce_Integration extends WC_Integration {
 	 * This is used to style the messenger UI.
 	 *
 	 * @since 1.10.0
+	 * @deprecated 3.2.0
 	 *
 	 * @return string
 	 */
@@ -2560,6 +2567,7 @@ class WC_Facebookcommerce_Integration extends WC_Integration {
 		 * Filters the configured Facebook messenger color hex.
 		 *
 		 * @since 1.10.0
+		 * @deprecated 3.2.0
 		 *
 		 * @param string $hex the configured Facebook messenger color hex
 		 * @param \WC_Facebookcommerce_Integration $integration the integration instance
