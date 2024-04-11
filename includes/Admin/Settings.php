@@ -182,9 +182,6 @@ class Settings {
 					case Connection::ID:
 						$crumbs[] = __( 'Connection', 'facebook-for-woocommerce' );
 						break;
-					case Settings_Screens\Messenger::ID:
-						$crumbs[] = __( 'Messenger', 'facebook-for-woocommerce' );
-						break;
 					case Settings_Screens\Product_Sync::ID:
 						$crumbs[] = __( 'Product sync', 'facebook-for-woocommerce' );
 						break;
