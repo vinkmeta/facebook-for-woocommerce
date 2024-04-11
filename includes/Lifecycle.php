@@ -322,4 +322,18 @@ class Lifecycle extends Framework\Lifecycle {
 
 		}
 	}
+
+	/**
+	 * Removes the messenger deprecation notice on upgrade to 3.2.0.
+	 *
+	 * @since 3.2.0
+	 */
+	protected function upgrade_to_3_2_0() {
+		// Remove the Messenger deprecation notice.
+		$notice_slug = 'facebook_messenger_deprecation_warning';
+		if( class_exists( 'WC_Admin_Notices' ) && \WC_Admin_Notices::has_notice( $notice_slug ) ) {
+			\WC_Admin_Notices::remove_notice( $notice_slug );
+		}
+	}
+
 }
