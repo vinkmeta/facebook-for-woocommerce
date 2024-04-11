@@ -85,7 +85,6 @@ class WC_Facebook_Loader {
 	protected function __construct() {
 
 		register_activation_hook( __FILE__, array( $this, 'activation_check' ) );
-		register_deactivation_hook( __FILE__, array( $this, 'maybe_remove_messenger_deprecation_notice' ) );
 
 		add_action( 'admin_init', array( $this, 'check_environment' ) );
 
@@ -319,6 +318,7 @@ class WC_Facebook_Loader {
 	 * Removes facebook_messenger_deprecation_warning notice if it exists.
 	 *
 	 * @since 3.1.14
+	 * @deprecated 3.2.0
 	 * @return void
 	 */
 	public function maybe_remove_messenger_deprecation_notice() {
