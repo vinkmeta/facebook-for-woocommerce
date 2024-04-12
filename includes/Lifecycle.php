@@ -41,7 +41,8 @@ class Lifecycle extends Framework\Lifecycle {
 			'2.0.4',
 			'2.4.0',
 			'2.5.0',
-			'3.1.13'
+			'3.1.13',
+			'3.2.0'
 		);
 	}
 
