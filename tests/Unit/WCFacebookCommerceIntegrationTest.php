@@ -2990,7 +2990,7 @@ class WCFacebookCommerceIntegrationTest extends WP_UnitTestCase {
 	}
 
 	/**
-	 * Tests is messenger enabled no filter but with option set.
+	 * Tests is messenger disabled no filter but with option still set.
 	 *
 	 * @return void
 	 */
@@ -3003,11 +3003,11 @@ class WCFacebookCommerceIntegrationTest extends WP_UnitTestCase {
 
 		$result = $this->integration->is_messenger_enabled();
 
-		$this->assertTrue( $result );
+		$this->assertFalse( $result );
 	}
 
 	/**
-	 * Tests is messenger enabled no filter but with filter.
+	 * Tests is messenger disabled enabled no option but with filter.
 	 *
 	 * @return void
 	 */
@@ -3025,7 +3025,7 @@ class WCFacebookCommerceIntegrationTest extends WP_UnitTestCase {
 
 		$result = $this->integration->is_messenger_enabled();
 
-		$this->assertTrue( $result );
+		$this->assertFalse( $result );
 	}
 
 	/**
