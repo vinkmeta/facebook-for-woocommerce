@@ -3,7 +3,7 @@ Contributors: facebook, automattic, woothemes
 Tags: facebook, woocommerce, marketing, product catalog feed, pixel
 Requires at least: 4.4
 Tested up to: 6.5
-Stable tag: 3.1.14
+Stable tag: 3.1.15
 Requires PHP: 5.6 or greater
 MySQL: 5.6 or greater
 License: GPLv2 or later
@@ -39,6 +39,10 @@ When opening a bug on GitHub, please give us as many details as possible.
 * Current version of Facebook-for-WooCommerce, WooCommerce, Wordpress, PHP
 
 == Changelog ==
+
+= 3.1.15 - 2024-04-16 =
+* Tweak - Replace the middleware URL from connect.woocommerce.com to api.woocommerce.com/integrations.
+* Tweak - Test environment setup to resolve notice.
 
 = 3.1.14 - 2024-04-03 =
 * Fix - Remove facebook_messenger_deprecation_warning notice on deactivation.
