@@ -2771,55 +2771,12 @@ class WCFacebookCommerceIntegrationTest extends WP_UnitTestCase {
 	}
 
 	/**
-	 * Tests is messenger enabled returns default value.
+	 * Tests is messenger enabled returns the doing it wrong message
 	 *
-	 * @return void
+	 * @expectedIncorrectUsage messenger_doing_it_wrong
 	 */
-	public function test_is_messenger_enabled_no_filter_no_option() {
-		remove_all_filters( 'wc_facebook_is_messenger_enabled' );
-		delete_option( WC_Facebookcommerce_Integration::SETTING_ENABLE_MESSENGER );
-
+	public function test_is_messenger_enabled_doing_it_wrong() {
 		$result = $this->integration->is_messenger_enabled();
-
-		$this->assertFalse( $result );
-	}
-
-	/**
-	 * Tests is messenger disabled no filter but with option still set.
-	 *
-	 * @return void
-	 */
-	public function test_is_messenger_enabled_no_filter() {
-		remove_all_filters( 'wc_facebook_is_messenger_enabled' );
-		add_option(
-			WC_Facebookcommerce_Integration::SETTING_ENABLE_MESSENGER,
-			'yes'
-		);
-
-		$result = $this->integration->is_messenger_enabled();
-
-		$this->assertFalse( $result );
-	}
-
-	/**
-	 * Tests is messenger disabled enabled no option but with filter.
-	 *
-	 * @return void
-	 */
-	public function test_is_messenger_enabled_with_filter() {
-		add_filter(
-			'wc_facebook_is_messenger_enabled',
-			function ( $is_enabled ) {
-				return true;
-			}
-		);
-		add_option(
-			WC_Facebookcommerce_Integration::SETTING_ENABLE_MESSENGER,
-			'no'
-		);
-
-		$result = $this->integration->is_messenger_enabled();
-
 		$this->assertFalse( $result );
 	}
 
