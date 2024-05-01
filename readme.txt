@@ -40,6 +40,10 @@ When opening a bug on GitHub, please give us as many details as possible.
 
 == Changelog ==
 
+= 3.2.0 - 2024-05-01 =
+* Tweak - PHP8.3 to GitHub PHPCS and Unit Tests workflows.
+* Update - Remove the sunsetted Messenger Chat feature.
+
 = 3.1.15 - 2024-04-16 =
 * Tweak - Replace the middleware URL from connect.woocommerce.com to api.woocommerce.com/integrations.
 * Tweak - Test environment setup to resolve notice.
