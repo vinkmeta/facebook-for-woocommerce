@@ -181,7 +181,6 @@ class WC_Facebookcommerce extends WooCommerce\Facebook\Framework\Plugin {
 			include_once 'facebook-commerce.php';
 
 			require_once __DIR__ . '/includes/fbproductfeed.php';
-			require_once __DIR__ . '/facebook-commerce-messenger-chat.php';
 
 			$this->heartbeat = new Heartbeat( WC()->queue() );
 			$this->heartbeat->init();

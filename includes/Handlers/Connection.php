@@ -901,15 +901,6 @@ class Connection {
 		if ( $external_merchant_settings_id = facebook_for_woocommerce()->get_integration()->get_external_merchant_settings_id() ) {
 			$parameters['setup']['merchant_settings_id'] = $external_merchant_settings_id;
 		}
-		// if messenger was previously enabled
-		if ( facebook_for_woocommerce()->get_integration()->is_messenger_enabled() ) {
-			$parameters['business_config']['messenger_chat'] = array(
-				'enabled' => true,
-				'domains' => array(
-					home_url( '/' ),
-				),
-			);
-		}
 		return $parameters;
 	}
 
