@@ -3,7 +3,7 @@ Contributors: facebook, automattic, woothemes
 Tags: facebook, woocommerce, marketing, product catalog feed, pixel
 Requires at least: 4.4
 Tested up to: 6.5
-Stable tag: 3.2.0
+Stable tag: 3.2.1
 Requires PHP: 5.6 or greater
 MySQL: 5.6 or greater
 License: GPLv2 or later
@@ -39,6 +39,12 @@ When opening a bug on GitHub, please give us as many details as possible.
 * Current version of Facebook-for-WooCommerce, WooCommerce, Wordpress, PHP
 
 == Changelog ==
+
+= 3.2.1 - 2024-05-07 =
+* Fix - Defer only AddToCart events if applicable.
+* Fix - Direct upgrade path from < 3.1.13 to ≥ 3.2.0.
+* Tweak - Adds WooCommerce as a dependency to the plugin header.
+* Tweak - Revert to WooCommerce.com domain.
 
 = 3.2.0 - 2024-05-01 =
 * Tweak - PHP8.3 to GitHub PHPCS and Unit Tests workflows.
