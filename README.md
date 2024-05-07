@@ -11,7 +11,7 @@ This is the development repository for the Facebook for WooCommerce plugin.
 ## Support
 The best place to get support is the [WordPress.org Facebook for WooCommerce forum](https://wordpress.org/support/plugin/facebook-for-woocommerce/).
 
-If you have a woocommerce.com account, you can [search for help or submit a help request on woocommerce.com](https://woocommerce.com/my-account/contact-support/).
+If you have a WooCommerce.com account, you can [search for help or submit a help request on WooCommerce.com](https://woocommerce.com/my-account/contact-support/).
 
 ### Logging
 The plugin offers logging that can help debug various problems. You can enable debug mode in the main plugin settings panel under the `Enable debug mode` section.
