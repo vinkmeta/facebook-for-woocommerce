@@ -709,7 +709,7 @@ class WC_Facebookcommerce extends WooCommerce\Facebook\Framework\Plugin {
 	 * @return string
 	 */
 	public function get_documentation_url() {
-		return 'https://woo.com/document/facebook-for-woocommerce/';
+		return 'https://woocommerce.com/document/facebook-for-woocommerce/';
 	}
 
 
@@ -733,7 +733,7 @@ class WC_Facebookcommerce extends WooCommerce\Facebook\Framework\Plugin {
 	 * @return string
 	 */
 	public function get_sales_page_url() {
-		return 'https://woo.com/products/facebook/';
+		return 'https://woocommerce.com/products/facebook/';
 	}
 
 
