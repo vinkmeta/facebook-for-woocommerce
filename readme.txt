@@ -40,6 +40,12 @@ When opening a bug on GitHub, please give us as many details as possible.
 
 == Changelog ==
 
+= 3.2.1 - 2024-05-07 =
+* Fix - Defer only AddToCart events if applicable.
+* Fix - Direct upgrade path from < 3.1.13 to ≥ 3.2.0.
+* Tweak - Adds WooCommerce as a dependency to the plugin header.
+* Tweak - Revert to WooCommerce.com domain.
+
 = 3.2.0 - 2024-05-01 =
 * Tweak - PHP8.3 to GitHub PHPCS and Unit Tests workflows.
 * Update - Remove the sunsetted Messenger Chat feature.
