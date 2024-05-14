@@ -40,6 +40,10 @@ When opening a bug on GitHub, please give us as many details as possible.
 
 == Changelog ==
 
+= 3.2.2 - 2024-05-14 =
+* Fix - Incorrect alert for Product Sets without excluded categories.
+* Tweak - WC 8.9 compatibility.
+
 = 3.2.1 - 2024-05-07 =
 * Fix - Defer only AddToCart events if applicable.
 * Fix - Direct upgrade path from < 3.1.13 to ≥ 3.2.0.
