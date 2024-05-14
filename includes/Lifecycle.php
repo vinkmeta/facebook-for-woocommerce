@@ -41,6 +41,7 @@ class Lifecycle extends Framework\Lifecycle {
 			'2.0.4',
 			'2.4.0',
 			'2.5.0',
+			'3.2.0'
 		);
 	}
 
@@ -307,4 +308,25 @@ class Lifecycle extends Framework\Lifecycle {
 		 */
 		as_unschedule_all_actions( Products\Feed::GENERATE_FEED_ACTION );
 	}
+
+	/**
+	 * Removes the messenger settings and deprecation notice on upgrade to 3.2.0.
+	 * Note: deprecation notice upgrade step removed in 3.2.1.
+	 *
+	 * @since 3.2.0
+	 */
+	protected function upgrade_to_3_2_0() {
+		// Remove the Messenger deprecation notice.
+		$notice_slug = 'facebook_messenger_deprecation_warning';
+		if( class_exists( 'WC_Admin_Notices' ) && \WC_Admin_Notices::has_notice( $notice_slug ) ) {
+			\WC_Admin_Notices::remove_notice( $notice_slug );
+		}
+
+		// Delete all messenger options
+		delete_option( \WC_Facebookcommerce_Integration::SETTING_ENABLE_MESSENGER );
+		delete_option( \WC_Facebookcommerce_Integration::SETTING_MESSENGER_LOCALE );
+		delete_option( \WC_Facebookcommerce_Integration::SETTING_MESSENGER_GREETING );
+		delete_option( \WC_Facebookcommerce_Integration::SETTING_MESSENGER_COLOR_HEX );
+	}
+
 }

@@ -20,7 +20,7 @@ use WooCommerce\Facebook\Products;
 use WooCommerce\Facebook\Products\Sync;
 
 /**
- * The Messenger settings screen object.
+ * The Product Sync settings screen object.
  */
 class Product_Sync extends Abstract_Settings_Screen {
 

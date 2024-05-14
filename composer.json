@@ -20,12 +20,12 @@
     "woocommerce/grow": "dev-compat-checker"
   },
   "require-dev": {
-    "dealerdirect/phpcodesniffer-composer-installer": "^v0.7",
+    "composer/installers": "^1.7.0",
+    "woocommerce/woocommerce-sniffs": "1.0.0",
+    "sirbrillig/phpcs-changed": "^2.11.1",
     "phpunit/phpunit": "^9.6",
-    "wp-coding-standards/wpcs": "^2.3",
     "yoast/phpunit-polyfills": "^2.0",
-    "wp-cli/i18n-command": "^2.2",
-    "woocommerce/woocommerce-sniffs": "^0.1.3"
+    "wp-cli/i18n-command": "^2.2"
   },
   "autoload": {
     "psr-4": {
@@ -54,6 +54,9 @@
     ]
   },
   "scripts": {
+    "lint": "chg=$(git diff --relative --name-only -- '*.php'); [[ -z $chg ]] || phpcs-changed -s --git --git-unstaged $chg",
+    "lint-staged": "chg=$(git diff HEAD --relative --name-only -- '*.php'); [[ -z $chg ]] || phpcs-changed -s --git $chg",
+    "lint-branch": "sh ./bin/lint-branch.sh",
     "test-unit": "./vendor/bin/phpunit"
   }
 }
