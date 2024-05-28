@@ -86,18 +86,6 @@ class WC_Facebookcommerce_Integration extends WC_Integration {
 	/** @var string the scheduled resync offset setting ID */
 	const SETTING_SCHEDULED_RESYNC_OFFSET = 'scheduled_resync_offset';
 
-	/** @var string the "enable messenger" setting ID */
-	const SETTING_ENABLE_MESSENGER = 'wc_facebook_enable_messenger';
-
-	/** @var string the messenger locale setting ID */
-	const SETTING_MESSENGER_LOCALE = 'wc_facebook_messenger_locale';
-
-	/** @var string the messenger greeting setting ID */
-	const SETTING_MESSENGER_GREETING = 'wc_facebook_messenger_greeting';
-
-	/** @var string the messenger color HEX setting ID */
-	const SETTING_MESSENGER_COLOR_HEX = 'wc_facebook_messenger_color_hex';
-
 	/** @var string the "debug mode" setting ID */
 	const SETTING_ENABLE_DEBUG_MODE = 'wc_facebook_enable_debug_mode';
 
