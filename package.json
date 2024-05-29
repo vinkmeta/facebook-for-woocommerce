@@ -12,6 +12,7 @@
     "url": "https://wordpress.org/support/plugin/facebook-for-woocommerce"
   },
   "devDependencies": {
+    "@wordpress/env": "^9.10.0",
     "@wordpress/scripts": "^14.0.0"
   },
   "scripts": {
