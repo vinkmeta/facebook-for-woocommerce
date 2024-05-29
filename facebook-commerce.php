@@ -86,18 +86,6 @@ class WC_Facebookcommerce_Integration extends WC_Integration {
 	/** @var string the scheduled resync offset setting ID */
 	const SETTING_SCHEDULED_RESYNC_OFFSET = 'scheduled_resync_offset';
 
-	/** @var string the "enable messenger" setting ID */
-	const SETTING_ENABLE_MESSENGER = 'wc_facebook_enable_messenger';
-
-	/** @var string the messenger locale setting ID */
-	const SETTING_MESSENGER_LOCALE = 'wc_facebook_messenger_locale';
-
-	/** @var string the messenger greeting setting ID */
-	const SETTING_MESSENGER_GREETING = 'wc_facebook_messenger_greeting';
-
-	/** @var string the messenger color HEX setting ID */
-	const SETTING_MESSENGER_COLOR_HEX = 'wc_facebook_messenger_color_hex';
-
 	/** @var string the "debug mode" setting ID */
 	const SETTING_ENABLE_DEBUG_MODE = 'wc_facebook_enable_debug_mode';
 
@@ -2484,64 +2472,6 @@ class WC_Facebookcommerce_Integration extends WC_Integration {
 		return $mode;
 	}
 
-	/**
-	 * Gets the configured Facebook messenger locale.
-	 *
-	 * @since 1.10.0
-	 * @deprecated 3.2.0
-	 *
-	 * @return string
-	 */
-	public function get_messenger_locale() {
-		$this->messenger_doing_it_wrong();
-		return 'en_US';
-	}
-
-	/**
-	 * Gets the configured Facebook messenger greeting.
-	 *
-	 * @since 1.10.0
-	 * @deprecated 3.2.0
-	 *
-	 * @return string
-	 */
-	public function get_messenger_greeting() {
-		$this->messenger_doing_it_wrong();
-		return Helper::str_truncate(
-			__( "Hi! We're here to answer any questions you may have.", 'facebook-for-woocommerce' ),
-			$this->get_messenger_greeting_max_characters(),
-			''
-		);
-	}
-
-	/**
-	 * Gets the maximum number of characters allowed in the messenger greeting.
-	 *
-	 * @since 1.10.0
-	 * @deprecated 3.2.0
-	 *
-	 * @return int
-	 */
-	public function get_messenger_greeting_max_characters() {
-		$this->messenger_doing_it_wrong();
-		return 80;
-	}
-
-	/**
-	 * Gets the configured Facebook messenger color hex.
-	 *
-	 * This is used to style the messenger UI.
-	 *
-	 * @since 1.10.0
-	 * @deprecated 3.2.0
-	 *
-	 * @return string
-	 */
-	public function get_messenger_color_hex() {
-		$this->messenger_doing_it_wrong();
-		return '#0084ff';
-	}
-
 	/** Setter methods ************************************************************************************************/
 
 
@@ -2705,32 +2635,6 @@ class WC_Facebookcommerce_Integration extends WC_Integration {
  	public function is_legacy_feed_file_generation_enabled() {
  		return 'yes' === get_option( self::OPTION_LEGACY_FEED_FILE_GENERATION_ENABLED, 'yes' );
  	}
-
-	/**
-	 * Determines whether the Facebook messenger is enabled.
-	 *
-	 * @since 1.10.0
-	 * @deprecated 3.2.0
-	 *
-	 * @return bool
-	 */
-	public function is_messenger_enabled() {
-		$this->messenger_doing_it_wrong();
-		return false;
-	}
-
-	/**
-	 * Show _doing_it_wrong for any deprecated public Messenger-related methods.
-	 *
-	 * @since 3.2.0
-	 */
-	private function messenger_doing_it_wrong() {
-		_doing_it_wrong(
-			__FUNCTION__,
-			esc_html__( 'The Facebook Messenger chat plugin was deprecated in May 2024.', 'facebook-for-woocommerce' ),
-			'3.2.0'
-		);
-	}
 
 	/**
 	 * Determines whether debug mode is enabled.

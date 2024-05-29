@@ -2771,16 +2771,6 @@ class WCFacebookCommerceIntegrationTest extends WP_UnitTestCase {
 	}
 
 	/**
-	 * Tests is messenger enabled returns the doing it wrong message
-	 *
-	 * @expectedIncorrectUsage messenger_doing_it_wrong
-	 */
-	public function test_is_messenger_enabled_doing_it_wrong() {
-		$result = $this->integration->is_messenger_enabled();
-		$this->assertFalse( $result );
-	}
-
-	/**
 	 * Tests is debug mode enabled returns default value.
 	 *
 	 * @return void
