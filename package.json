@@ -1,6 +1,6 @@
 {
   "name": "facebook-for-woocommerce",
-  "version": "3.2.3",
+  "version": "3.2.4",
   "author": "Facebook",
   "homepage": "https://woocommerce.com/products/facebook/",
   "license": "GPL-2.0",
@@ -12,6 +12,7 @@
     "url": "https://wordpress.org/support/plugin/facebook-for-woocommerce"
   },
   "devDependencies": {
+    "@wordpress/env": "^9.10.0",
     "@wordpress/scripts": "^14.0.0"
   },
   "scripts": {
