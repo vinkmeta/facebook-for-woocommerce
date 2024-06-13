@@ -3,7 +3,7 @@ Contributors: facebook, automattic, woothemes
 Tags: facebook, woocommerce, marketing, product catalog feed, pixel
 Requires at least: 4.4
 Tested up to: 6.5
-Stable tag: 3.2.3
+Stable tag: 3.2.4
 Requires PHP: 5.6 or greater
 MySQL: 5.6 or greater
 License: GPLv2 or later
@@ -39,6 +39,11 @@ When opening a bug on GitHub, please give us as many details as possible.
 * Current version of Facebook-for-WooCommerce, WooCommerce, Wordpress, PHP
 
 == Changelog ==
+
+= 3.2.4 - 2024-06-13 =
+* Dev - Adds support for wp-env.
+* Tweak - Fully remove Facebook Messenger code references.
+* Tweak - WC 9.0 compatibility.
 
 = 3.2.3 - 2024-05-28 =
 * Add - Versioning and compatibility checks to implement support policy.
