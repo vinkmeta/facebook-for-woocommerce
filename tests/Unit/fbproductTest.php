@@ -80,4 +80,27 @@ class fbproductTest extends WP_UnitTestCase {
 		$description      = $facebook_product->get_fb_description();
 		$this->assertEquals( $description, get_post( $product->get_id() )->post_excerpt );
 	}
+
+	/**
+	 * Test it filters description.
+	 * @return void
+	 */
+	public function test_filter_fb_description() {
+		$product = WC_Helper_Product::create_simple_product();
+		$facebook_product = new \WC_Facebook_Product( $product );
+		$facebook_product->set_description( 'fb description' );
+
+		add_filter( 'facebook_for_woocommerce_fb_product_description', function( $description ) {
+			return 'filtered description';
+		});
+
+		$description = $facebook_product->get_fb_description();
+		$this->assertEquals( $description, 'filtered description' );
+
+		remove_all_filters( 'facebook_for_woocommerce_fb_product_description' );
+
+		$description = $facebook_product->get_fb_description();
+		$this->assertEquals( $description, 'fb description' );
+
+	}
 }

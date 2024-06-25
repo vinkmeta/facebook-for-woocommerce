@@ -436,8 +436,15 @@ class WC_Facebook_Product {
 				$description = $post_title;
 			}
 		}
-
-		return $description;
+		/**
+		 * Filters the FB product description.
+		 *
+		 * @since x.x.x
+		 *
+		 * @param string  $description Facebook product description.
+		 * @param int     $id          WooCommerce Product ID.
+		 */
+		return apply_filters( 'facebook_for_woocommerce_fb_product_description', $description, $this->id );
 	}
 
 	/**
