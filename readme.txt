@@ -40,6 +40,10 @@ When opening a bug on GitHub, please give us as many details as possible.
 
 == Changelog ==
 
+= 3.2.5 - 2024-07-10 =
+* Tweak - WC 9.1 compatibility.
+* Tweak - WP 6.6 compatibility.
+
 = 3.2.4 - 2024-06-13 =
 * Dev - Adds support for wp-env.
 * Tweak - Fully remove Facebook Messenger code references.
