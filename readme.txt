@@ -40,7 +40,7 @@ When opening a bug on GitHub, please give us as many details as possible.
 
 == Changelog ==
 
-= 3.2.5 - 2024-07-10 =
+= 3.2.5 - 2024-xx-xx =
 * Tweak - WC 9.1 compatibility.
 * Tweak - WP 6.6 compatibility.
 
