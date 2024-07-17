@@ -138,9 +138,9 @@ class Helper {
 	 */
 	public static function str_to_ascii( $string ) {
 		// Strip ASCII chars 32 and under
-		$string = preg_replace('/[\x00-\x1F]/', '', $string);
+		$string = preg_replace( '/[\x00-\x1F]/', '', $string );
 		// Strip ASCII chars 127 and higher
-		return preg_replace('/[\x7F-\xFF]/', '', $string);
+		return preg_replace( '/[\x7F-\xFF]/', '', $string );
 	}
 
 
