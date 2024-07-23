@@ -439,7 +439,7 @@ class WC_Facebook_Product {
 		/**
 		 * Filters the FB product description.
 		 *
-		 * @since x.x.x
+		 * @since 3.2.6
 		 *
 		 * @param string  $description Facebook product description.
 		 * @param int     $id          WooCommerce Product ID.
