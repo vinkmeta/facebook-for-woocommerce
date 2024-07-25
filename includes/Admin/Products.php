@@ -170,7 +170,7 @@ class Products {
 	 */
 	public static function get_available_product_attribute_names( \WC_Product $product ) {
 		return array_map(
-			function( $attribute ) use ( $product ) {
+			function ( $attribute ) use ( $product ) {
 				return wc_attribute_label( $attribute->get_name(), $product );
 			},
 			Products_Handler::get_available_product_attributes( $product )

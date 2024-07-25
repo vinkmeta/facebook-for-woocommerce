@@ -302,7 +302,7 @@ class Settings {
 		// ensure no bogus values are added via filter
 		$screens = array_filter(
 			$screens,
-			function( $value ) {
+			function ( $value ) {
 				return $value instanceof Abstract_Settings_Screen;
 			}
 		);

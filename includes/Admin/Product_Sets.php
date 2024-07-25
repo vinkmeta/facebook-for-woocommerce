@@ -118,7 +118,7 @@ class Product_Sets {
 		$wc_product_cats = empty( $_POST[ $this->categories_field ] ) ? '' : wc_clean( wp_unslash( $_POST[ $this->categories_field ] ) ); //phpcs:ignore
 		if ( ! empty( $wc_product_cats ) ) {
 			$wc_product_cats = array_map(
-				function( $item ) {
+				function ( $item ) {
 					return absint( $item );
 				},
 				$wc_product_cats
