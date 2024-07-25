@@ -125,5 +125,4 @@ class DeleteProductsFromFBCatalog extends AbstractChainedJob {
 	public function get_batch_size(): int {
 		return 25;
 	}
-
 }

@@ -120,5 +120,4 @@ class DebugTools {
 		facebook_for_woocommerce()->job_manager->delete_all_products->queue_start();
 		return esc_html__( 'Delete products from Facebook catalog job started!', 'facebook-for-woocommerce' );
 	}
-
 }

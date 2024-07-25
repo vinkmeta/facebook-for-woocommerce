@@ -443,5 +443,4 @@ class ProductValidator {
 			throw new ProductInvalidException( __( 'Too many attributes selected for product. Use 4 or less.', 'facebook-for-woocommerce' ) );
 		}
 	}
-
 }
