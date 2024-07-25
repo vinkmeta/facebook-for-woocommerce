@@ -57,7 +57,6 @@ class ResetAllProductsFBSettings extends AbstractChainedJob {
 		);
 
 		return array_map( 'intval', $products );
-
 	}
 
 	/**

@@ -266,7 +266,6 @@ class Enhanced_Catalog_Attribute_Fields {
 				// string
 				$this->render_text_field( $attr_id, $attribute, $placeholder );
 		}
-
 	}
 
 	private function render_select_field( $attr_id, $attribute ) {

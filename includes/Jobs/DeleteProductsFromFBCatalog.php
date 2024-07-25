@@ -57,7 +57,6 @@ class DeleteProductsFromFBCatalog extends AbstractChainedJob {
 		);
 
 		return array_map( 'intval', $products );
-
 	}
 
 	/**
