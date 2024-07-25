@@ -362,7 +362,7 @@ class Settings {
 					'order'  => $order,
 				)
 			);
-			$order++;
+			++$order;
 		}
 	}
 }
