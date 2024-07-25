@@ -16,7 +16,7 @@
 		<exclude name="Squiz.Commenting.FileComment.Missing"/>
 
 		<!-- Rules related to comments. We will come back to implementing these rules-->
-		<exclude name="Generic.Arrays.DisallowShortArraySyntax.Found"/>
+		<exclude name="Universal.Arrays.DisallowShortArraySyntax.Found"/>
 		<exclude name="Generic.Commenting.DocComment.MissingShort"/>
 		<exclude name="Squiz.Commenting.InlineComment.InvalidEndChar"/>
 		<exclude name="Squiz.Commenting.FunctionComment.Missing"/>
