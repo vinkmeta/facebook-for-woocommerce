@@ -16,7 +16,8 @@ defined( 'ABSPATH' ) || exit;
  */
 class DeleteProductsFromFBCatalog extends AbstractChainedJob {
 
-	use BatchQueryOffset, LoggingTrait;
+	use BatchQueryOffset;
+	use LoggingTrait;
 
 	/**
 	 * Called before starting the job.
