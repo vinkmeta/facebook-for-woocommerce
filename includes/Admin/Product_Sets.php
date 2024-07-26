@@ -149,7 +149,12 @@ class Product_Sets {
 	 */
 	protected function get_field( $term_id = '' ) {
 		$saved_items  = get_term_meta( $term_id, $this->categories_field, true );
-		$product_cats = get_terms( 'product_cat', array( 'hide_empty' => 0 ) );
+		$product_cats = get_terms(
+			array(
+				'taxonomy'   => 'product_cat',
+				'hide_empty' => false,
+			)
+		);
 		?>
 		<div class="select2 updating-message"><p></p></div>
 		<select
