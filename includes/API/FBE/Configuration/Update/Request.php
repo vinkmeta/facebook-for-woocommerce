@@ -52,6 +52,4 @@ class Request extends Configuration\Request {
 				),
 		);
 	}
-
-
 }

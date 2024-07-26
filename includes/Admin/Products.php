@@ -67,8 +67,8 @@ class Products {
 		);
 		if (
 			empty( $category_id ) ||
-			$category_handler->is_category( $category_id ) &&
-			$category_handler->is_root_category( $category_id )
+			( $category_handler->is_category( $category_id ) &&
+			$category_handler->is_root_category( $category_id ) )
 		) {
 			// show nothing
 			return;
@@ -170,7 +170,7 @@ class Products {
 	 */
 	public static function get_available_product_attribute_names( \WC_Product $product ) {
 		return array_map(
-			function( $attribute ) use ( $product ) {
+			function ( $attribute ) use ( $product ) {
 				return wc_attribute_label( $attribute->get_name(), $product );
 			},
 			Products_Handler::get_available_product_attributes( $product )
@@ -210,7 +210,7 @@ class Products {
 		<div id="variable-product-not-ready-notice" style="display:none;">
 			<p>
 			<?php
-			echo sprintf(
+			printf(
 				/* translators: Placeholders %1$s - strong opening tag, %2$s - strong closing tag */
 				esc_html__( 'To sell this product on Instagram, at least one variation must be synced to Facebook. You can control variation sync on the %1$sVariations%2$s tab with the %1$sFacebook Sync%2$s setting.', 'facebook-for-woocommerce' ),
 				'<strong>',
