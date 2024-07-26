@@ -114,7 +114,7 @@ class Product_Sets {
 	 * @param int $term_id Term ID.
 	 * @param int $tt_id Term taxonomy ID.
 	 */
-	public function save_custom_field( $term_id, $tt_id ) {
+	public function save_custom_field( $term_id, $tt_id ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundAfterLastUsed
 		$wc_product_cats = empty( $_POST[ $this->categories_field ] ) ? '' : wc_clean( wp_unslash( $_POST[ $this->categories_field ] ) ); //phpcs:ignore
 		if ( ! empty( $wc_product_cats ) ) {
 			$wc_product_cats = array_map(
