@@ -210,7 +210,7 @@ class Products {
 		<div id="variable-product-not-ready-notice" style="display:none;">
 			<p>
 			<?php
-			echo sprintf(
+			printf(
 				/* translators: Placeholders %1$s - strong opening tag, %2$s - strong closing tag */
 				esc_html__( 'To sell this product on Instagram, at least one variation must be synced to Facebook. You can control variation sync on the %1$sVariations%2$s tab with the %1$sFacebook Sync%2$s setting.', 'facebook-for-woocommerce' ),
 				'<strong>',
