@@ -177,7 +177,9 @@ class Settings {
 			$crumbs = array(
 				__( 'Facebook for WooCommerce', 'facebook-for-woocommerce' ),
 			);
+			//phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			if ( ! empty( $_GET['tab'] ) ) {
+				//phpcs:ignore WordPress.Security.NonceVerification.Recommended
 				switch ( $_GET['tab'] ) {
 					case Connection::ID:
 						$crumbs[] = __( 'Connection', 'facebook-for-woocommerce' );
