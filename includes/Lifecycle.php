@@ -224,7 +224,7 @@ class Lifecycle extends Framework\Lifecycle {
 				'messenger_locale'              => self::SETTING_MESSENGER_LOCALE,
 				'messenger_greeting'            => self::SETTING_MESSENGER_GREETING,
 				'messenger_color_hex'           => self::SETTING_MESSENGER_COLOR_HEX,
-				'enable_debug_mode'             => self::SETTING_ENABLE_DEBUG_MODE,
+				'enable_debug_mode'             => \WC_Facebookcommerce_Integration::SETTING_ENABLE_DEBUG_MODE,
 			);
 			foreach ( $settings_map as $old_name => $new_name ) {
 				if ( ! empty( $settings[ $old_name ] ) ) {
