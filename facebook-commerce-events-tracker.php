@@ -1061,7 +1061,7 @@ if ( ! class_exists( 'WC_Facebookcommerce_EventsTracker' ) ) :
 
 					if ( isset( $item['data'] ) && $item['data'] instanceof \WC_Product ) {
 
-						$product_names[] = $item['data']->get_title();
+						$product_names[] = \WC_Facebookcommerce_Utils::clean_string( $item['data']->get_title() );
 					}
 				}
 			}
