@@ -251,25 +251,36 @@ class Connection {
 				throw new ApiException( 'Invalid nonce' );
 			}
 
-			$is_error   = ! empty( $_GET['err'] ) ? true : false;
+			$is_error   = ! empty( $_GET['err'] );
 			$error_code = ! empty( $_GET['err_code'] ) ? stripslashes( wc_clean( wp_unslash( $_GET['err_code'] ) ) ) : '';
 			if ( $is_error && $error_code ) {
 				throw new ConnectApiException( $error_code );
 			}
 
 			$facebook_auth_code = $_GET['code'] ?? '';
+			$state			  	= $_GET['state'] ?? '';
 			if ( empty( $facebook_auth_code ) ) {
 				throw new ApiException( 'Facebook auth code is missing.' );
 			}
 
-			$response = wp_safe_remote_get(
-				self::PROXY_TOKEN_EXCHANGE_URL,
-				[
+			if ( empty( $state ) ) {
+				throw new ApiException( 'Missing state query parameter.' );
+			}
+
+			$parameters_string = '?' . http_build_query( array(
 					'nonce'                => wp_create_nonce( self::ACTION_EXCHANGE ),
 					'code'                 => $facebook_auth_code,
 					'external_business_id' => $this->get_external_business_id(),
 					'type'                 => self::AUTH_TYPE_STANDARD,
-				]
+					'state'                => $state,
+				) );
+
+			$request_url = self::PROXY_TOKEN_EXCHANGE_URL . $parameters_string;
+			$response = wp_safe_remote_get(
+				$request_url,
+				array(
+					'timeout' => 60,
+				)
 			);
 
 			if ( is_wp_error( $response ) ) {
@@ -277,6 +288,10 @@ class Connection {
 			}
 
 			$token_data = json_decode( wp_remote_retrieve_body( $response ), true );
+
+			if ( isset( $token_data[ 'status' ] ) && $token_data[ 'status' ] === 500 ) {
+				throw new ApiException( 'WooCommerce Connect Server token exchange has failed.' );
+			}
 
 			// Check that request was initiated from the server.
 			if ( ! wp_verify_nonce( $token_data['nonce'] ?? '', self::ACTION_EXCHANGE ) ) {
