@@ -18,7 +18,7 @@ class Response extends API\Response {
 	 * @return boolean
 	 */
 	public function is_ig_shopping_enabled(): bool {
-		return ! ! $this->response_data['ig_shopping']['enabled'] ?? false;
+		return (bool) $this->response_data['ig_shopping']['enabled'] ?? false;
 	}
 
 	/**
@@ -27,6 +27,6 @@ class Response extends API\Response {
 	 * @return boolean
 	 */
 	public function is_ig_cta_enabled(): bool {
-		return ! ! $this->response_data['ig_cta']['enabled'];
+		return (bool) $this->response_data['ig_cta']['enabled'];
 	}
 }
