@@ -40,6 +40,11 @@ When opening a bug on GitHub, please give us as many details as possible.
 
 == Changelog ==
 
+= 3.2.7 - 2024-08-13 =
+* Dev - Updated `phpcs` ruleset.
+* Fix - Update failing due to undefined constant error in Lifecycle.
+* Tweak - WC 9.2 compatibility.
+
 = 3.2.6 - 2024-07-23 =
 * Add - Filter facebook_for_woocommerce_fb_product_description.
 * Fix - Remove deprecated FILTER_SANITIZE_STRING usage.
