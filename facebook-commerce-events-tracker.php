@@ -517,7 +517,7 @@ if ( ! class_exists( 'WC_Facebookcommerce_EventsTracker' ) ) :
 			$event_data = array(
 				'event_name'  => 'ViewContent',
 				'custom_data' => array(
-					'content_name'     => $product->get_title(),
+					'content_name'     => \WC_Facebookcommerce_Utils::clean_string( $product->get_title() ),
 					'content_ids'      => wp_json_encode( \WC_Facebookcommerce_Utils::get_fb_content_ids( $product ) ),
 					'content_type'     => $content_type,
 					'contents'         => wp_json_encode(
@@ -583,7 +583,7 @@ if ( ! class_exists( 'WC_Facebookcommerce_EventsTracker' ) ) :
 				'event_name'  => 'AddToCart',
 				'custom_data' => array(
 					'content_ids'  => wp_json_encode( \WC_Facebookcommerce_Utils::get_fb_content_ids( $product ) ),
-					'content_name' => $product->get_name(),
+					'content_name' => \WC_Facebookcommerce_Utils::clean_string( $product->get_title() ),
 					'content_type' => 'product',
 					'contents'     => wp_json_encode(
 						array(
@@ -655,7 +655,7 @@ if ( ! class_exists( 'WC_Facebookcommerce_EventsTracker' ) ) :
 
 				$params = array(
 					'content_ids'  => wp_json_encode( \WC_Facebookcommerce_Utils::get_fb_content_ids( $product ) ),
-					'content_name' => $product->get_name(),
+					'content_name' => \WC_Facebookcommerce_Utils::clean_string( $product->get_title() ),
 					'content_type' => 'product',
 					'contents'     => wp_json_encode(
 						array(
@@ -846,7 +846,7 @@ if ( ! class_exists( 'WC_Facebookcommerce_EventsTracker' ) ) :
 
 				if ( $product ) {
 					$product_ids[]   = \WC_Facebookcommerce_Utils::get_fb_content_ids( $product );
-					$product_names[] = $product->get_name();
+					$product_names[] = \WC_Facebookcommerce_Utils::clean_string( $product->get_title() );
 
 					if ( 'product_group' !== $content_type && $product->is_type( 'variable' ) ) {
 						$content_type = 'product_group';
@@ -1061,7 +1061,7 @@ if ( ! class_exists( 'WC_Facebookcommerce_EventsTracker' ) ) :
 
 					if ( isset( $item['data'] ) && $item['data'] instanceof \WC_Product ) {
 
-						$product_names[] = $item['data']->get_name();
+						$product_names[] = \WC_Facebookcommerce_Utils::clean_string( $item['data']->get_title() );
 					}
 				}
 			}
