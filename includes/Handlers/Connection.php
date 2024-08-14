@@ -34,9 +34,9 @@ class Connection {
 	const OAUTH_URL = 'https://facebook.com/dialog/oauth';
 
 	/** @var string WooCommerce connection proxy URL */
-	const PROXY_URL = 'https://api.woocommerce.com/integrations/auth/facebook/';
+	const PROXY_URL = 'https://api.woocommerce.com/integrations/v2/auth/facebook/';
 
-	const PROXY_TOKEN_EXCHANGE_URL = 'https://api.woocommerce.com/integrations/exchange/facebook/';
+	const PROXY_TOKEN_EXCHANGE_URL = 'https://api.woocommerce.com/integrations/v2/exchange/facebook/';
 
 	/** @var string WooCommerce connection for APP Store login URL */
 	const APP_STORE_LOGIN_URL = 'https://api.woocommerce.com/integrations/app-store-login/facebook/';
