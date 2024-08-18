@@ -457,31 +457,31 @@ class WC_Facebook_Product {
 
 		$sale_price = $this->woo_product->get_sale_price();
 		$sale_price_effective_date = '';
-
-		$sale_start =
-			( $date     = $this->woo_product->get_date_on_sale_from() )
-				? date_i18n( WC_DateTime::ATOM, $date->getOffsetTimestamp() )
-				: self::MIN_DATE_1 . self::MIN_TIME;
-
-		$sale_end =
-			( $date   = $this->woo_product->get_date_on_sale_to() )
-				? date_i18n( WC_DateTime::ATOM, $date->getOffsetTimestamp() )
-				: self::MAX_DATE . self::MAX_TIME;
+		$sale_start = '';
+		$sale_end = '';
 
 		// check if sale exist
 		if ( is_numeric( $sale_price ) && $sale_price > 0 ) {
+			$sale_start =
+				( $date     = $this->woo_product->get_date_on_sale_from() )
+					? date_i18n( WC_DateTime::ATOM, $date->getOffsetTimestamp() )
+					: self::MIN_DATE_1 . self::MIN_TIME;
+			$sale_end =
+				( $date   = $this->woo_product->get_date_on_sale_to() )
+					? date_i18n( WC_DateTime::ATOM, $date->getOffsetTimestamp() )
+					: self::MAX_DATE . self::MAX_TIME;
 			$sale_price_effective_date =
 				( $sale_start == self::MIN_DATE_1 . self::MIN_TIME && $sale_end == self::MAX_DATE . self::MAX_TIME )
 				? ''
 				: $sale_start . '/' . $sale_end;
 				$sale_price =
 				intval( round( $this->get_price_plus_tax( $sale_price ) * 100 ) );
-		}
 
-		// Set Sale start and end as empty if set to default values
-		if ( $sale_start == self::MIN_DATE_1 . self::MIN_TIME && $sale_end == self::MAX_DATE . self::MAX_TIME ) {
-			$sale_start = '';
-			$sale_end   = '';
+			// Set Sale start and end as empty if set to default values
+			if ( $sale_start == self::MIN_DATE_1 . self::MIN_TIME && $sale_end == self::MAX_DATE . self::MAX_TIME ) {
+				$sale_start = '';
+				$sale_end   = '';
+			}
 		}
 
 		// check if sale is expired and sale time range is valid

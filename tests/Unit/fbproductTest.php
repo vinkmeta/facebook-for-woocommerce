@@ -107,7 +107,7 @@ class fbproductTest extends WP_UnitTestCase {
 	/**
 	 * Test Data Provider for sale_price related fields
 	 */
-	public function provideSalePriceData() {
+	public function provide_sale_price_data() {
 		return [
 			[
 				11.5,
@@ -133,6 +133,16 @@ class fbproductTest extends WP_UnitTestCase {
 				null,
 				null,
 				null,
+				0,
+				'',
+				'',
+				'',
+				'',
+			],
+			[
+				null,
+				'2024-08-08',
+				'2024-08-18',
 				0,
 				'',
 				'',
@@ -175,7 +185,7 @@ class fbproductTest extends WP_UnitTestCase {
 	/**
 	 * Test that sale_price related fields are being set correctly while preparing product.
 	 *
-	 * @dataProvider provideSalePriceData
+	 * @dataProvider provide_sale_price_data
 	 * @return void
 	 */
 	public function test_sale_price_and_effective_date(
