@@ -34,15 +34,15 @@ class Connection {
 	const OAUTH_URL = 'https://facebook.com/dialog/oauth';
 
 	/** @var string WooCommerce connection proxy URL */
-	const PROXY_URL = 'https://api.woocommerce.com/integrations/v2/auth/facebook/';
+	const PROXY_URL = 'https://wcs.jurassic.tube/integrations/v2/auth/facebook/';
 
-	const PROXY_TOKEN_EXCHANGE_URL = 'https://api.woocommerce.com/integrations/v2/exchange/facebook/';
+	const PROXY_TOKEN_EXCHANGE_URL = 'https://wcs.jurassic.tube/integrations/v2/exchange/facebook/';
 
 	/** @var string WooCommerce connection for APP Store login URL */
-	const APP_STORE_LOGIN_URL = 'https://api.woocommerce.com/integrations/app-store-login/facebook/';
+	const APP_STORE_LOGIN_URL = 'https://wcs.jurassic.tube/integrations/app-store-login/facebook/';
 
 	/** @var string WooCommerce connection authentication URL */
-	const CONNECTION_AUTHENTICATION_URL = 'https://api.woocommerce.com/integrations/auth/facebookcommerce/';
+	const CONNECTION_AUTHENTICATION_URL = 'https://wcs.jurassic.tube/integrations/auth/facebookcommerce/';
 
 	/** @var string the Standard Auth type */
 	const AUTH_TYPE_STANDARD = 'standard';
@@ -258,11 +258,11 @@ class Connection {
 			}
 
 			$facebook_auth_code = $_GET['code'] ?? '';
-			$state			  	= $_GET['state'] ?? '';
 			if ( empty( $facebook_auth_code ) ) {
 				throw new ApiException( 'Facebook auth code is missing.' );
 			}
 
+			$state = $_GET['state'] ?? '';
 			if ( empty( $state ) ) {
 				throw new ApiException( 'Missing state query parameter.' );
 			}
@@ -276,7 +276,7 @@ class Connection {
 				) );
 
 			$request_url = self::PROXY_TOKEN_EXCHANGE_URL . $parameters_string;
-			$response = wp_safe_remote_get(
+			$response    = wp_safe_remote_get(
 				$request_url,
 				array(
 					'timeout' => 60,
@@ -298,9 +298,9 @@ class Connection {
 				throw new ApiException( 'Exchange nonce is not valid.' );
 			}
 
-			$merchant_access_token    = ! empty( $token_data['merchant_access_token'] ) ? wc_clean( wp_unslash( $token_data['merchant_access_token'] ) ) : '';
-			$system_user_access_token = ! empty( $token_data['system_user_access_token'] ) ? wc_clean( wp_unslash( $token_data['system_user_access_token'] ) ) : '';
-			$system_user_id           = ! empty( $token_data['system_user_id'] ) ? wc_clean( wp_unslash( $token_data['system_user_id'] ) ) : '';
+			$merchant_access_token    = wc_clean( wp_unslash( $token_data['merchant_access_token']    ?? '' ) ) ;
+			$system_user_access_token = wc_clean( wp_unslash( $token_data['system_user_access_token'] ?? '' ) ) ;
+			$system_user_id           = wc_clean( wp_unslash( $token_data['system_user_id']           ?? '' ) ) ;
 
 			if ( ! $merchant_access_token ) {
 				throw new ApiException( 'Access token is missing' );
