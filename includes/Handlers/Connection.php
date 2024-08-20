@@ -34,15 +34,15 @@ class Connection {
 	const OAUTH_URL = 'https://facebook.com/dialog/oauth';
 
 	/** @var string WooCommerce connection proxy URL */
-	const PROXY_URL = 'https://wcs.jurassic.tube/integrations/v2/auth/facebook/';
+	const PROXY_URL = 'https://api.woocommerce.com/integrations/v2/auth/facebook/';
 
-	const PROXY_TOKEN_EXCHANGE_URL = 'https://wcs.jurassic.tube/integrations/v2/exchange/facebook/';
+	const PROXY_TOKEN_EXCHANGE_URL = 'https://api.woocommerce.com/integrations/v2/exchange/facebook/';
 
 	/** @var string WooCommerce connection for APP Store login URL */
-	const APP_STORE_LOGIN_URL = 'https://wcs.jurassic.tube/integrations/app-store-login/facebook/';
+	const APP_STORE_LOGIN_URL = 'https://api.woocommerce.com/integrations/app-store-login/facebook/';
 
 	/** @var string WooCommerce connection authentication URL */
-	const CONNECTION_AUTHENTICATION_URL = 'https://wcs.jurassic.tube/integrations/auth/facebookcommerce/';
+	const CONNECTION_AUTHENTICATION_URL = 'https://api.woocommerce.com/integrations/auth/facebookcommerce/';
 
 	/** @var string the Standard Auth type */
 	const AUTH_TYPE_STANDARD = 'standard';
