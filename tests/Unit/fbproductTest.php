@@ -156,18 +156,18 @@ class fbproductTest extends WP_UnitTestCase {
                     "gender" => "female"
                 ),
             ],
-            // Woo attributes with space, '-' and different casing
+            // Woo attributes with space, '-' and different casing of enum attribute
             [
                 173,
                 array(
-                    "age group" => "teen",
+                    "age group" => "Teen",
                     "is-costume" => "yes",
                     "Sunglasses Width" => "narrow"
                 ),
                 array(
                 ),
                 array(
-                    "age_group" => "teen",
+                    "age_group" => "Teen",
                     "is_costume" => "yes",
                     "sunglasses_width" => "narrow"
                 ),
