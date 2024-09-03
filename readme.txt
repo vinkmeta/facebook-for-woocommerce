@@ -40,6 +40,10 @@ When opening a bug on GitHub, please give us as many details as possible.
 
 == Changelog ==
 
+= 3.2.8 - 2024-09-03 =
+* Update - Access Token retrieval procedure.
+* Update - Use get_title() for content_name to match catalog name.
+
 = 3.2.7 - 2024-08-13 =
 * Dev - Updated `phpcs` ruleset.
 * Fix - Update failing due to undefined constant error in Lifecycle.
