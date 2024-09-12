@@ -40,6 +40,10 @@ When opening a bug on GitHub, please give us as many details as possible.
 
 == Changelog ==
 
+= 3.2.9 - 2024-09-12 =
+* Break - Removes WooCommerce navigation items.
+* Tweak - WC 9.3 compatibility.
+
 = 3.2.8 - 2024-09-03 =
 * Update - Access Token retrieval procedure.
 * Update - Use get_title() for content_name to match catalog name.
