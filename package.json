@@ -35,7 +35,8 @@
     "wp_org_slug": "facebook-for-woocommerce",
     "version_replace_paths": [
       "./"
-    ]
+    ],
+    "use_gh_release_notes": true
   },
   "engines": {
     "node": ">=12.22 <=16",
