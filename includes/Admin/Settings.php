@@ -110,7 +110,7 @@ class Settings {
 		if ( $pagenow == 'edit-tags.php' ) {
 			if ( isset( $_GET['taxonomy'] ) && $_GET['taxonomy'] == 'fb_product_set' ) {
 				$parent_file  = $root_menu_item;
-				$submenu_file = self::PAGE_ID;
+				$submenu_file = self::PAGE_ID; //phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 			}
 		}
 
