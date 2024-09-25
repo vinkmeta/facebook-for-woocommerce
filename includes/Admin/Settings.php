@@ -107,8 +107,8 @@ class Settings {
 
 		$root_menu_item = $this->root_menu_item();
 
-		if ( $pagenow == 'edit-tags.php' ) {
-			if ( isset( $_GET['taxonomy'] ) && $_GET['taxonomy'] == 'fb_product_set' ) {
+		if ( 'edit-tags.php' == $pagenow ) {
+			if ( isset( $_GET['taxonomy'] ) && 'fb_product_set' == $_GET['taxonomy'] ) {
 				$parent_file  = $root_menu_item;
 				$submenu_file = self::PAGE_ID; //phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 			}
