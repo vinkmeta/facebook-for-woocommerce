@@ -105,34 +105,6 @@ class Settings {
 			5
 		);
 		$this->connect_to_enhanced_admin( $is_marketing_enabled ? 'marketing_page_wc-facebook' : 'woocommerce_page_wc-facebook' );
-
-		if ( $is_marketing_enabled ) {
-			$this->add_fb_product_sets_to_marketing_menu();
-		}
-	}
-
-	/**
-	 * Checks for connection and if established adds Facebook Product Sets taxonomy page to the Marketing menu.
-	 *
-	 * @since 2.6.29
-	 */
-	private function add_fb_product_sets_to_marketing_menu() {
-		$is_connected = facebook_for_woocommerce()->get_connection_handler()->is_connected();
-
-		// If a connection is not established, do not add Facebook Product Sets to Marketing menu.
-		if ( ! $is_connected ) {
-			return;
-		}
-
-		add_submenu_page(
-			'woocommerce-marketing',
-			esc_html__( 'Facebook Product Sets', 'facebook-for-woocommerce' ),
-			esc_html__( 'Facebook Product Sets', 'facebook-for-woocommerce' ),
-			'manage_woocommerce',
-			admin_url( self::SUBMENU_PAGE_ID ),
-			'',
-			10
-		);
 	}
 
 	/**
