@@ -118,6 +118,7 @@ class Settings {
 	}
 
 	/**
+	 * Get root menu item.
 	 *
 	 * @since x.x.x
 	 * return string Root menu item slug.
@@ -131,6 +132,7 @@ class Settings {
 	}
 
 	/**
+	 * Check if marketing feature is enabled.
 	 *
 	 * @since x.x.x
 	 * return bool Is marketing enabled.
