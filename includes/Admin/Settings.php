@@ -81,20 +81,8 @@ class Settings {
 	 * @since 2.0.0
 	 */
 	public function add_menu_item() {
-		$root_menu_item       = 'woocommerce';
-		$is_marketing_enabled = false;
+		$root_menu_item = $this->root_menu_item();
 
-		if ( Compatibility::is_enhanced_admin_available() ) {
-			if ( class_exists( WooAdminFeatures::class ) ) {
-				$is_marketing_enabled = WooAdminFeatures::is_enabled( 'marketing' );
-			} else {
-				$is_marketing_enabled = is_callable( '\Automattic\WooCommerce\Admin\Loader::is_feature_enabled' )
-					&& \Automattic\WooCommerce\Admin\Loader::is_feature_enabled( 'marketing' );
-			}
-			if ( $is_marketing_enabled ) {
-				$root_menu_item = 'woocommerce-marketing';
-			}
-		}
 		add_submenu_page(
 			$root_menu_item,
 			__( 'Facebook for WooCommerce', 'facebook-for-woocommerce' ),
@@ -104,7 +92,7 @@ class Settings {
 			[ $this, 'render' ],
 			5
 		);
-		$this->connect_to_enhanced_admin( $is_marketing_enabled ? 'marketing_page_wc-facebook' : 'woocommerce_page_wc-facebook' );
+		$this->connect_to_enhanced_admin( $this->is_marketing_enabled() ? 'marketing_page_wc-facebook' : 'woocommerce_page_wc-facebook' );
 	}
 
 	/**
@@ -115,15 +103,45 @@ class Settings {
 	 * @return string
 	 */
 	public function set_parent_and_submenu_file( $parent_file ) {
-		global $submenu_file, $current_screen;
+		global $pagenow, $submenu_file, $current_screen;
 
-		// The Facebook Product Set is now a submenu of woocommerce-marketing. Hence, we are overriding the $parent_file and $submenu_file when accessing the fb_product_set taxonomy page.
-		if ( isset( $current_screen->taxonomy ) && 'fb_product_set' === $current_screen->taxonomy ) {
-			$parent_file  = 'woocommerce-marketing';
-			$submenu_file = admin_url( self::SUBMENU_PAGE_ID ); //phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
+		$root_menu_item = $this->root_menu_item();
+
+		if ( $pagenow == 'edit-tags.php' ) {
+			if ( isset( $_GET['taxonomy'] ) && $_GET['taxonomy'] == 'fb_product_set' ) {
+				$parent_file  = $root_menu_item;
+				$submenu_file = self::PAGE_ID;
+			}
 		}
 
 		return $parent_file;
+	}
+
+	/**
+	 *
+	 * @since x.x.x
+	 * return string Root menu item slug.
+	 */
+	public function root_menu_item() {
+		if ( $this->is_marketing_enabled() ) {
+			return 'woocommerce-marketing';
+		}
+
+		return 'woocommerce';
+	}
+
+	/**
+	 *
+	 * @since x.x.x
+	 * return bool Is marketing enabled.
+	 */
+	public function is_marketing_enabled() {
+		if ( class_exists( WooAdminFeatures::class ) ) {
+			return WooAdminFeatures::is_enabled( 'marketing' );
+		}
+
+		return is_callable( '\Automattic\WooCommerce\Admin\Loader::is_feature_enabled' )
+				&& \Automattic\WooCommerce\Admin\Loader::is_feature_enabled( 'marketing' );
 	}
 
 	/**
