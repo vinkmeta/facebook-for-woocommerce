@@ -103,12 +103,12 @@ class Settings {
 	 * @return string
 	 */
 	public function set_parent_and_submenu_file( $parent_file ) {
-		global $pagenow, $submenu_file, $current_screen;
+		global $pagenow, $submenu_file;
 
 		$root_menu_item = $this->root_menu_item();
 
-		if ( 'edit-tags.php' == $pagenow ) {
-			if ( isset( $_GET['taxonomy'] ) && 'fb_product_set' == $_GET['taxonomy'] ) {
+		if ( 'edit-tags.php' === $pagenow ) {
+			if ( isset( $_GET['taxonomy'] ) && 'fb_product_set' === $_GET['taxonomy'] ) { //phpcs:ignore WordPress.Security.NonceVerification.Recommended
 				$parent_file  = $root_menu_item;
 				$submenu_file = self::PAGE_ID; //phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 			}
