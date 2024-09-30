@@ -81,20 +81,8 @@ class Settings {
 	 * @since 2.0.0
 	 */
 	public function add_menu_item() {
-		$root_menu_item       = 'woocommerce';
-		$is_marketing_enabled = false;
+		$root_menu_item = $this->root_menu_item();
 
-		if ( Compatibility::is_enhanced_admin_available() ) {
-			if ( class_exists( WooAdminFeatures::class ) ) {
-				$is_marketing_enabled = WooAdminFeatures::is_enabled( 'marketing' );
-			} else {
-				$is_marketing_enabled = is_callable( '\Automattic\WooCommerce\Admin\Loader::is_feature_enabled' )
-					&& \Automattic\WooCommerce\Admin\Loader::is_feature_enabled( 'marketing' );
-			}
-			if ( $is_marketing_enabled ) {
-				$root_menu_item = 'woocommerce-marketing';
-			}
-		}
 		add_submenu_page(
 			$root_menu_item,
 			__( 'Facebook for WooCommerce', 'facebook-for-woocommerce' ),
@@ -104,35 +92,7 @@ class Settings {
 			[ $this, 'render' ],
 			5
 		);
-		$this->connect_to_enhanced_admin( $is_marketing_enabled ? 'marketing_page_wc-facebook' : 'woocommerce_page_wc-facebook' );
-
-		if ( $is_marketing_enabled ) {
-			$this->add_fb_product_sets_to_marketing_menu();
-		}
-	}
-
-	/**
-	 * Checks for connection and if established adds Facebook Product Sets taxonomy page to the Marketing menu.
-	 *
-	 * @since 2.6.29
-	 */
-	private function add_fb_product_sets_to_marketing_menu() {
-		$is_connected = facebook_for_woocommerce()->get_connection_handler()->is_connected();
-
-		// If a connection is not established, do not add Facebook Product Sets to Marketing menu.
-		if ( ! $is_connected ) {
-			return;
-		}
-
-		add_submenu_page(
-			'woocommerce-marketing',
-			esc_html__( 'Facebook Product Sets', 'facebook-for-woocommerce' ),
-			esc_html__( 'Facebook Product Sets', 'facebook-for-woocommerce' ),
-			'manage_woocommerce',
-			admin_url( self::SUBMENU_PAGE_ID ),
-			'',
-			10
-		);
+		$this->connect_to_enhanced_admin( $this->is_marketing_enabled() ? 'marketing_page_wc-facebook' : 'woocommerce_page_wc-facebook' );
 	}
 
 	/**
@@ -143,15 +103,47 @@ class Settings {
 	 * @return string
 	 */
 	public function set_parent_and_submenu_file( $parent_file ) {
-		global $submenu_file, $current_screen;
+		global $pagenow, $submenu_file;
 
-		// The Facebook Product Set is now a submenu of woocommerce-marketing. Hence, we are overriding the $parent_file and $submenu_file when accessing the fb_product_set taxonomy page.
-		if ( isset( $current_screen->taxonomy ) && 'fb_product_set' === $current_screen->taxonomy ) {
-			$parent_file  = 'woocommerce-marketing';
-			$submenu_file = admin_url( self::SUBMENU_PAGE_ID ); //phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
+		$root_menu_item = $this->root_menu_item();
+
+		if ( 'edit-tags.php' === $pagenow || 'term.php' === $pagenow ) {
+			if ( isset( $_GET['taxonomy'] ) && 'fb_product_set' === $_GET['taxonomy'] ) { //phpcs:ignore WordPress.Security.NonceVerification.Recommended
+				$parent_file  = $root_menu_item;
+				$submenu_file = self::PAGE_ID; //phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
+			}
 		}
 
 		return $parent_file;
+	}
+
+	/**
+	 * Get root menu item.
+	 *
+	 * @since 3.2.10
+	 * return string Root menu item slug.
+	 */
+	public function root_menu_item() {
+		if ( $this->is_marketing_enabled() ) {
+			return 'woocommerce-marketing';
+		}
+
+		return 'woocommerce';
+	}
+
+	/**
+	 * Check if marketing feature is enabled.
+	 *
+	 * @since 3.2.10
+	 * return bool Is marketing enabled.
+	 */
+	public function is_marketing_enabled() {
+		if ( class_exists( WooAdminFeatures::class ) ) {
+			return WooAdminFeatures::is_enabled( 'marketing' );
+		}
+
+		return is_callable( '\Automattic\WooCommerce\Admin\Loader::is_feature_enabled' )
+				&& \Automattic\WooCommerce\Admin\Loader::is_feature_enabled( 'marketing' );
 	}
 
 	/**
