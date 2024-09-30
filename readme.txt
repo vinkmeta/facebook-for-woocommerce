@@ -40,6 +40,9 @@ When opening a bug on GitHub, please give us as many details as possible.
 
 == Changelog ==
 
+= 3.2.10 - 2024-09-30 =
+* Update -  Remove Marketing Products Sets menu entry.
+
 = 3.2.9 - 2024-09-12 =
 * Break - Removes WooCommerce navigation items.
 * Tweak - WC 9.3 compatibility.
