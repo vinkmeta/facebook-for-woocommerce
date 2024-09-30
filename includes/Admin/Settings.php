@@ -120,7 +120,7 @@ class Settings {
 	/**
 	 * Get root menu item.
 	 *
-	 * @since x.x.x
+	 * @since 3.2.10
 	 * return string Root menu item slug.
 	 */
 	public function root_menu_item() {
@@ -134,7 +134,7 @@ class Settings {
 	/**
 	 * Check if marketing feature is enabled.
 	 *
-	 * @since x.x.x
+	 * @since 3.2.10
 	 * return bool Is marketing enabled.
 	 */
 	public function is_marketing_enabled() {
