@@ -735,6 +735,11 @@ class WC_Facebook_Product {
 			}
 		}
 
+		// Add GTIN (Global Trade Item Number)
+		if ( $gtin = $this->woo_product->get_global_unique_id() ) {
+			$product_data['gtin'] = $gtin;
+		}
+
 		// Only use checkout URLs if they exist.
 		$checkout_url = $this->build_checkout_url( $product_url );
 		if ( $checkout_url ) {
