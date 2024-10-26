@@ -261,11 +261,12 @@ class Product_Sync extends Abstract_Settings_Screen {
 				'title' => __( 'Product sync', 'facebook-for-woocommerce' ),
 			),
 			array(
-				'id'      => \WC_Facebookcommerce_Integration::SETTING_ENABLE_PRODUCT_SYNC,
-				'title'   => __( 'Enable product sync', 'facebook-for-woocommerce' ),
-				'type'    => 'checkbox',
-				'label'   => ' ',
-				'default' => 'yes',
+				'id'       => \WC_Facebookcommerce_Integration::SETTING_ENABLE_PRODUCT_SYNC,
+				'title'    => __( 'Enable product sync', 'facebook-for-woocommerce' ),
+				'type'     => 'checkbox',
+				'label'    => ' ',
+				'default'  => 'yes',
+				'desc_tip' => __( 'Enable changes made to products to be synced to Facebook.', 'facebook-for-woocommerce' ),
 			),
 
 			array(
@@ -274,7 +275,7 @@ class Product_Sync extends Abstract_Settings_Screen {
 				'type'              => 'multiselect',
 				'class'             => 'wc-enhanced-select product-sync-field',
 				'css'               => 'min-width: 300px;',
-				'desc_tip'          => __( 'Products in one or more of these categories will not sync to Facebook.', 'facebook-for-woocommerce' ),
+				'desc_tip'          => __( 'Products in any of these categories will not sync to Facebook.', 'facebook-for-woocommerce' ),
 				'default'           => array(),
 				'options'           => is_array( $product_categories ) ? $product_categories : array(),
 				'custom_attributes' => array(
@@ -288,7 +289,7 @@ class Product_Sync extends Abstract_Settings_Screen {
 				'type'              => 'multiselect',
 				'class'             => 'wc-enhanced-select product-sync-field',
 				'css'               => 'min-width: 300px;',
-				'desc_tip'          => __( 'Products with one or more of these tags will not sync to Facebook.', 'facebook-for-woocommerce' ),
+				'desc_tip'          => __( 'Products with any of these tags will not sync to Facebook.', 'facebook-for-woocommerce' ),
 				'default'           => array(),
 				'options'           => is_array( $product_tags ) ? $product_tags : array(),
 				'custom_attributes' => array(

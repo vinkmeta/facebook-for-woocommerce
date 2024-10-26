@@ -180,7 +180,7 @@ class Admin {
 					array(
 						'i18n' => array(
 							'top_level_dropdown_placeholder' => __( 'Search main categories...', 'facebook-for-woocommerce' ),
-							'second_level_empty_dropdown_placeholder' => __( 'Choose a main category', 'facebook-for-woocommerce' ),
+							'second_level_empty_dropdown_placeholder' => __( 'Choose a main category first', 'facebook-for-woocommerce' ),
 							'general_dropdown_placeholder'   => __( 'Choose a category', 'facebook-for-woocommerce' ),
 						),
 					)
