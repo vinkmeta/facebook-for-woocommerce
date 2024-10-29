@@ -313,6 +313,6 @@ div#message:has(a[href*="facebook_messenger_deprecation_warning"]) {
 
 #mainform .actions{
 	display: flex;
-  max-width: 635px;
-  flex-direction: column;
+	max-width: 635px;
+	flex-direction: column;
 }
