@@ -314,6 +314,5 @@ div#message:has(a[href*="facebook_messenger_deprecation_warning"]) {
 #mainform .actions{
 	display: flex;
   max-width: 635px;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
 }
