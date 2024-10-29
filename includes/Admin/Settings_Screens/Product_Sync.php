@@ -41,7 +41,7 @@ class Product_Sync extends Abstract_Settings_Screen {
 		$this->id                = self::ID;
 		$this->label             = __( 'Product sync', 'facebook-for-woocommerce' );
 		$this->title             = __( 'Product sync', 'facebook-for-woocommerce' );
-		$this->documentation_url = 'https://woocommerce.com/document/facebook-for-woocommerce/#catalog-syncing';
+		$this->documentation_url = 'https://woocommerce.com/document/facebook-for-woocommerce/#product-sync-settings';
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_assets' ) );
 		add_action( 'woocommerce_admin_field_product_sync_title', array( $this, 'render_title' ) );
 		add_action( 'woocommerce_admin_field_product_sync_google_product_categories', array( $this, 'render_google_product_category_field' ) );
@@ -267,7 +267,7 @@ class Product_Sync extends Abstract_Settings_Screen {
 				'type'     => 'checkbox',
 				'label'    => ' ',
 				'default'  => 'yes',
-				'desc_tip' => __( 'Enable changes made to products to be synced to Facebook.', 'facebook-for-woocommerce' ),
+				'desc_tip' => __( 'Enable product syncing with Facebook.', 'facebook-for-woocommerce' ),
 			),
 
 			array(
