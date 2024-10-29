@@ -33,6 +33,9 @@ abstract class Abstract_Settings_Screen {
 	/** @var string screen description, for display */
 	protected $description;
 
+	/** @var string documentation URL for the more information link */
+	protected $documentation_url;
+
 
 	/**
 	 * Renders the screen.
@@ -71,6 +74,16 @@ abstract class Abstract_Settings_Screen {
 				<input type="hidden" name="screen_id" value="<?php echo esc_attr( $this->get_id() ); ?>">
 				<?php wp_nonce_field( 'wc_facebook_admin_save_' . $this->get_id() . '_settings' ); ?>
 				<?php submit_button( __( 'Save changes', 'facebook-for-woocommerce' ), 'primary', 'save_' . $this->get_id() . '_settings' ); ?>
+				<?php if ( $this->documentation_url ) : ?>
+					<a href="<?php echo esc_url( $this->documentation_url ); ?>" class="" target="_blank">
+						<?php 
+						/**
+						 * Translators: %s Settings screen label/title.
+						 */
+						printf( esc_html__( 'Learn more about %s', 'facebook-for-woocommerce' ), $this->get_label() ); 
+						?>
+					</a>
+				<?php endif; ?>
 			<?php endif; ?>
 
 		</form>
