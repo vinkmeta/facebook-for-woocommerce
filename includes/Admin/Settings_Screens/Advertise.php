@@ -217,7 +217,7 @@ class Advertise extends Abstract_Settings_Screen {
 			data-fbe-scopes="manage_business_extension"
 			data-fbe-redirect-uri="https://mariner9.s3.amazonaws.com/"></div>
 		<?php
-		$this->maybe_render_learn_more_link( 'Advertising' );
+		$this->maybe_render_learn_more_link( __( 'Advertising', 'facebook-for-woocommerce' ) );
 
 		parent::render();
 	}
