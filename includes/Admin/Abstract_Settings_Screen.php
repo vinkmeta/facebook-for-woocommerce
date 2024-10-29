@@ -92,15 +92,18 @@ abstract class Abstract_Settings_Screen {
 	 * @since 3.3.0
 	 */
 	protected function maybe_render_learn_more_link( $screen_label ) {
-		if ( $this->documentation_url ) : ?>
+		if ( $this->documentation_url ) :
+			?>
 			<span class="learn-more-link"><a href="<?php echo esc_url( $this->documentation_url ); ?>" class="" target="_blank">
-				<?php 
-				/**
+				<?php
+				/*
 				 * Translators: %s Settings screen label/title, in lowercase.
 				 */
-				printf( esc_html__( 'Learn more about %s', 'facebook-for-woocommerce' ), strtolower( $screen_label ) ); 
-				?></a></span>
-		<?php endif;
+				echo esc_html( sprintf( __( 'Learn more about %s', 'facebook-for-woocommerce' ), strtolower( $screen_label ) ) );
+				?>
+				</a></span>
+			<?php
+		endif;
 	}
 
 
