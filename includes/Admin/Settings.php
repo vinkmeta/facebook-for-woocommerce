@@ -391,7 +391,6 @@ class Settings {
 								if (tabs) {
 										let wpbody = document.querySelector('#wpbody-content > .wrap');
 										if (wpbody) {		
-											// wpbody.querySelector('h1').remove();
 											// move tabs to the top of wpbody
 											wpbody.insertBefore(tabs, wpbody.firstChild);
 											tabs.style.display = 'block';
