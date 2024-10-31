@@ -14,7 +14,6 @@ use Automattic\WooCommerce\Admin\Features\Features as WooAdminFeatures;
 use WooCommerce\Facebook\Admin\Settings_Screens;
 use WooCommerce\Facebook\Admin\Settings_Screens\Connection;
 use WooCommerce\Facebook\Framework\Helper;
-use WooCommerce\Facebook\Framework\Plugin\Compatibility;
 use WooCommerce\Facebook\Framework\Plugin\Exception as PluginException;
 
 defined( 'ABSPATH' ) || exit;
@@ -53,7 +52,7 @@ class Settings {
 		add_action( 'wp_loaded', array( $this, 'save' ) );
 		add_filter( 'parent_file', array( $this, 'set_parent_and_submenu_file' ) );
 
-		add_action( 'admin_head', array( $this, 'add_tabs_to_product_sets_taxonomy' ) );
+		add_action( 'all_admin_notices', array( $this, 'add_tabs_to_product_sets_taxonomy' ) );
 	}
 
 	/**
@@ -349,6 +348,7 @@ class Settings {
 	 * @since 3.3.0
 	 */
 	public function add_tabs_to_product_sets_taxonomy() {
+
 		// Only load this on the edit-tags.php page
 		$screen                  = get_current_screen();
 		$is_taxonomy_list_page   = 'edit-tags' === $screen->base;
@@ -361,48 +361,27 @@ class Settings {
 			?>
 				<style>
 					.facebook-for-woocommerce-tabs {
-						margin-top: 20px;
-						margin-bottom: 10px;
-						display: none;
+						margin: 30px 20px 0 20px;
 					}
 					#wpbody-content > .wrap > h1 {
-						margin-top: 65px;
 						font-size: 1.3em;
 						font-weight: 600;
 					}
-					<?php
-					// On the taxonomy list page in mobile view, account for the Screen Options tab.
-					if ( $is_taxonomy_list_page ) :
-						?>
+
 					@media (max-width: 782px) {
 						.facebook-for-woocommerce-tabs {
-								padding-top: 0;
-								position: relative;
-								top: -10px;
-								margin-bottom: -10px;
-							}
+								padding-top: 19px;
+								margin-bottom: -1px;
 						}
-					<?php endif; ?>
+						.edit-tags-php .facebook-for-woocommerce-tabs {
+							clear: both;
+							padding-top: 0;
+							position: relative;
+							top: -10px;
+							margin-bottom: -11px;
+						}
 				</style>
-				<script>
-						document.addEventListener('DOMContentLoaded', function() {
-								// Insert custom tabs into #wpbody
-								let tabs = document.querySelector('nav.facebook-for-woocommerce-tabs');
-								if (tabs) {
-										let wpbody = document.querySelector('#wpbody-content > .wrap');
-										if (wpbody) {		
-											// move tabs to the top of wpbody
-											wpbody.insertBefore(tabs, wpbody.firstChild);
-											tabs.style.display = 'block';
-											let header = wpbody.querySelector('h1');
-											if (header) {
-												header.style.marginTop = '0px';
-											}
-										}
-								}
-						});
-				</script>
-				<?php
+			<?php
 		}
 	}
 }
