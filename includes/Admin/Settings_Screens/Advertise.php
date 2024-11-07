@@ -32,8 +32,9 @@ class Advertise extends Abstract_Settings_Screen {
 	 */
 	public function __construct() {
 		$this->id    = self::ID;
-		$this->label = __( 'Advertise', 'facebook-for-woocommerce' );
-		$this->title = __( 'Advertise', 'facebook-for-woocommerce' );
+		$this->label             = __( 'Advertise', 'facebook-for-woocommerce' );
+		$this->title             = __( 'Advertise', 'facebook-for-woocommerce' );
+		$this->documentation_url = 'https://woocommerce.com/document/facebook-for-woocommerce/#how-to-create-ads-on-facebook';
 
 		$this->add_hooks();
 	}
@@ -216,6 +217,7 @@ class Advertise extends Abstract_Settings_Screen {
 			data-fbe-scopes="manage_business_extension"
 			data-fbe-redirect-uri="https://mariner9.s3.amazonaws.com/"></div>
 		<?php
+		$this->maybe_render_learn_more_link( __( 'Advertising', 'facebook-for-woocommerce' ) );
 
 		parent::render();
 	}
