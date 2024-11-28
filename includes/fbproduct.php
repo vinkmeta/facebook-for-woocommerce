@@ -11,6 +11,7 @@
 
 require_once __DIR__ . '/fbutils.php';
 
+use WooCommerce\Facebook\Framework\Plugin\Compatibility;
 use WooCommerce\Facebook\Framework\Helper;
 use WooCommerce\Facebook\Products;
 
@@ -736,7 +737,7 @@ class WC_Facebook_Product {
 		}
 
 		// Add GTIN (Global Trade Item Number)
-		if ( $gtin = $this->woo_product->get_global_unique_id() ) {
+		if ( Compatibility::is_wc_version_gte( '9.1.0' ) && $gtin = $this->woo_product->get_global_unique_id() ) {
 			$product_data['gtin'] = $gtin;
 		}
 
