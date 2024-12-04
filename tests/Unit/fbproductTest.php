@@ -103,4 +103,114 @@ class fbproductTest extends WP_UnitTestCase {
 		$this->assertEquals( $description, 'fb description' );
 
 	}
+
+	/**
+	 * Test Data Provider for sale_price related fields
+	 */
+	public function provide_sale_price_data() {
+		return [
+			[
+				11.5,
+				null,
+				null,
+				1150,
+				'11.5 USD',
+				'',
+				'',
+				'',
+			],
+			[
+				0,
+				null,
+				null,
+				0,
+				'0 USD',
+				'',
+				'',
+				'',
+			],
+			[
+				null,
+				null,
+				null,
+				0,
+				'',
+				'',
+				'',
+				'',
+			],
+			[
+				null,
+				'2024-08-08',
+				'2024-08-18',
+				0,
+				'',
+				'',
+				'',
+				'',
+			],
+			[
+				11,
+				'2024-08-08',
+				null,
+				1100,
+				'11 USD',
+				'2024-08-08T00:00:00+00:00/2038-01-17T23:59+00:00',
+				'2024-08-08T00:00:00+00:00',
+				'2038-01-17T23:59+00:00',
+			],
+			[
+				11,
+				null,
+				'2024-08-08',
+				1100,
+				'11 USD',
+				'1970-01-29T00:00+00:00/2024-08-08T00:00:00+00:00',
+				'1970-01-29T00:00+00:00',
+				'2024-08-08T00:00:00+00:00',
+			],
+			[
+				11,
+				'2024-08-08',
+				'2024-08-09',
+				1100,
+				'11 USD',
+				'2024-08-08T00:00:00+00:00/2024-08-09T00:00:00+00:00',
+				'2024-08-08T00:00:00+00:00',
+				'2024-08-09T00:00:00+00:00',
+			],
+		];
+	}
+
+	/**
+	 * Test that sale_price related fields are being set correctly while preparing product.
+	 *
+	 * @dataProvider provide_sale_price_data
+	 * @return void
+	 */
+	public function test_sale_price_and_effective_date(
+		$salePrice,
+		$sale_price_start_date,
+		$sale_price_end_date,
+		$expected_sale_price,
+		$expected_sale_price_for_batch,
+		$expected_sale_price_effective_date,
+		$expected_sale_price_start_date,
+		$expected_sale_price_end_date
+	) {
+		$product          = WC_Helper_Product::create_simple_product();
+		$facebook_product = new \WC_Facebook_Product( $product );
+		$facebook_product->set_sale_price( $salePrice );
+		$facebook_product->set_date_on_sale_from( $sale_price_start_date );
+		$facebook_product->set_date_on_sale_to( $sale_price_end_date );
+
+		$product_data = $facebook_product->prepare_product( $facebook_product->get_id(), \WC_Facebook_Product::PRODUCT_PREP_TYPE_ITEMS_BATCH );
+		$this->assertEquals( $product_data['sale_price'], $expected_sale_price_for_batch );
+		$this->assertEquals( $product_data['sale_price_effective_date'], $expected_sale_price_effective_date );
+
+		$product_data = $facebook_product->prepare_product( $facebook_product->get_id(), \WC_Facebook_Product::PRODUCT_PREP_TYPE_FEED );
+		$this->assertEquals( $product_data['sale_price'], $expected_sale_price );
+		$this->assertEquals( $product_data['sale_price_start_date'], $expected_sale_price_start_date );
+		$this->assertEquals( $product_data['sale_price_end_date'], $expected_sale_price_end_date );
+	}
 }
