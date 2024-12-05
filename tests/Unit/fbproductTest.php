@@ -304,4 +304,60 @@ class fbproductTest extends WP_UnitTestCase {
 
 		$this->assertEquals( $data['quantity_to_sell_on_facebook'], 128 );
 	}
+
+	/**
+	 * Test GTIN is added for simple product 
+	 * @return void
+	 */
+	public function test_gtin_for_simple_product_set() {
+		$woo_product = WC_Helper_Product::create_simple_product();
+		$woo_product->set_global_unique_id(9504000059446);
+		
+		$fb_product = new \WC_Facebook_Product( $woo_product );
+		$data = $fb_product->prepare_product();
+
+		$this->assertEquals( $data['gtin'], 9504000059446 );
+	}
+
+	/**
+	 * Test GTIN is not added for simple product
+	 * @return void
+	 */
+	public function test_gtin_for_simple_product_unset() {
+		$woo_product = WC_Helper_Product::create_simple_product();
+		$fb_product = new \WC_Facebook_Product( $woo_product );
+		$data = $fb_product->prepare_product();
+		$this->assertEquals(isset($data['gtin']), false);
+	}
+
+	/**
+	 * Test GTIN is added for variable product
+	 * @return void
+	 */
+	public function test_gtin_for_variable_product_set() {
+		$woo_product = WC_Helper_Product::create_variation_product();
+		$woo_variation = wc_get_product($woo_product->get_children()[0]);
+		$woo_variation->set_global_unique_id(9504000059446);
+
+		$fb_parent_product = new \WC_Facebook_Product($woo_product);
+		$fb_product = new \WC_Facebook_Product( $woo_variation, $fb_parent_product );
+		$data = $fb_product->prepare_product();
+
+		$this->assertEquals( $data['gtin'], 9504000059446 );
+	}
+
+	/**
+	 * Test GTIN is not added for variable product
+	 * @return void
+	 */
+	public function test_gtin_for_variable_product_unset() {
+		$woo_product = WC_Helper_Product::create_variation_product();
+		$woo_variation = wc_get_product($woo_product->get_children()[0]);
+
+		$fb_parent_product = new \WC_Facebook_Product($woo_product);
+		$fb_product = new \WC_Facebook_Product( $woo_variation, $fb_parent_product );
+		$data = $fb_product->prepare_product();
+
+		$this->assertEquals(isset($data['gtin']), false);
+	}
 }
