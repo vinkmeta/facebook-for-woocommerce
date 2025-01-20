@@ -731,13 +731,13 @@ class WC_Facebook_Product {
 			$product_data['quantity_to_sell_on_facebook'] = (int) max( 0, $this->woo_product->get_stock_quantity() );
 		} else if ( $this->woo_product->is_type( 'variation' ) ) {
 			$parent_product = wc_get_product( $this->woo_product->get_parent_id() );
-			if ( $parent_product && $parent_product->managing_stock() ) {	
+			if ( $parent_product && $parent_product->managing_stock() ) {
 				$product_data['quantity_to_sell_on_facebook'] = (int) max( 0, $parent_product->get_stock_quantity() );
 			}
 		}
 
 		// Add GTIN (Global Trade Item Number)
-		if ( Compatibility::is_wc_version_gte( '9.1.0' ) && $gtin = $this->woo_product->get_global_unique_id() ) {
+		if ( method_exists( $this->woo_product, 'get_global_unique_id' ) && $gtin = $this->woo_product->get_global_unique_id() ) {
 			$product_data['gtin'] = $gtin;
 		}
 
